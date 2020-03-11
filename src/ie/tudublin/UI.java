@@ -49,7 +49,7 @@ public class UI extends PApplet
 
 		for(TableRow tr : t.rows())
 		{
-			Resistor r = new Resistor(tr.getInt("value"));
+			Resistor r = new Resistor(tr.getInt(0));
 			resistors.add(r);
 		}
 	}
@@ -67,16 +67,23 @@ public class UI extends PApplet
 	{
 		size(500, 800);
 		
-		separate(381);
-		separate(1);
-		separate(92);
+		// separate(381);
+		// separate(1);
+		// separate(92);
 	}
 
 	public void setup() 
 	{
+		loadColours();
+		loadResistors();
+		printColours();
 	}
 	
 	public void draw()
-	{			
+	{	
+		for(Resistor r : resistors)
+		{
+			r.render(this);
+		}		
 	}
 }
