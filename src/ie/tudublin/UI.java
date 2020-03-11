@@ -11,6 +11,7 @@ public class UI extends PApplet
 {	
 
 	ArrayList<Colour> colours = new ArrayList<Colour>();
+	ArrayList<Resistor> resistors = new ArrayList<Resistor>();
 
 	public void loadColours()
 	{
@@ -40,6 +41,17 @@ public class UI extends PApplet
 			}
 		}
 		return null;
+	}
+
+	public void loadResistors()
+	{
+		Table t = loadTable("resistors.csv");
+
+		for(TableRow tr : t.rows())
+		{
+			Resistor r = new Resistor(tr.getInt("value"));
+			resistors.add(r);
+		}
 	}
 	public void separate(int value)
 	{
