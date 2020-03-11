@@ -12,6 +12,35 @@ public class UI extends PApplet
 
 	ArrayList<Colour> colours = new ArrayList<Colour>();
 
+	public void loadColours()
+	{
+		Table t = loadTable("colours.csv", "header");
+		for(TableRow tr : t.rows())
+		{
+			Colour c = new Colour(tr);
+			colours.add(c);
+		}
+	}
+
+	public void printColours()
+	{
+		for(Colour c : colours)
+		{
+			println(c);
+		}
+	}
+
+	public Colour findColour(int value)
+	{
+		for(Colour c : colours)
+		{
+			if(value == c.getValue())
+			{
+				return c;
+			}
+		}
+		return null;
+	}
 	public void separate(int value)
 	{
 		int hundreds = (value / 100);
